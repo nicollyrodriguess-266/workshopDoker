@@ -1,31 +1,49 @@
 <?php
 
-echo "<h1>Docker funcionando </h1>";
+$email_correto = "admin@email.com";
+$senha_correta = "1234";
 
+if (isset($_POST['email']) && isset($_POST['senha'])) {
 
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
 
-$host = 'db';
-
-$user = 'root';
-
-$pass = '1234';
-
-$db = 'meubanco';
-
-
-
-$conn = new mysqli($host, $user, $pass, $db);
-
-
-
-if ($conn->connect_error) {
-
-  	die("Erro: " . $conn->connect_error);
+    if ($email == $email_correto && $senha == $senha_correta) {
+        echo "Login realizado com sucesso!";
+    } else {
+        echo "Email ou senha incorretos!";
+    }
 
 }
 
-
-
-echo "Conectado ao banco!";
-
 ?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document ico</title>
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+	
+<div class="login-box">
+    <h2>Login</h2>
+
+    <form action="login.php" method="POST">
+        
+        <div class="form-box">
+            <input type="text" name="email" placeholder="Email" required>
+            <input type="password" name="senha" placeholder="Senha" required>
+
+            <input type="submit" value="Entrar">
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>
